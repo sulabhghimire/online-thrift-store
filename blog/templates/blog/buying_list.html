@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block text %}
+    <h2>What people are trying to buy.
+        {% if user.is_authenticated %}
+        <a href="{% url 'ask_item' %}"> + Ask for item </a>
+        {% endif %}
+    </h2>
+
+{% endblock text %}
+
+{% block content %}
+    {% for post in posts %}
+        <a href="{% url 'buy_detail' post.pk %}">
+                <br>{{ post.title }}
+                <br>
+                <small>{{ post.date_posted|date:"F d, Y" }} </small>
+                <br>
+                <br>
+        </a>
+    {% endfor %}
+{% endblock content %}

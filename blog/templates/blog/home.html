@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block heading%}
+<section id="showcase">
+    <div class="container" id='somethingnew'>
+    <h1>Find things as your need</h1>
+    <p>
+        Look what other students are willing to sell and be able to ask for things that you are willing to buy.
+    </p>
+    </div>
+    <div class="sidebar" id="categorical">
+        <a class="active">Categorical Search</a>
+        {% for category in categories %}
+            <a href="{% url 'catego-search' category.id %}">{{ category.categ }}</a>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+{% endblock heading %}
+
+{% block text %}
+    <h2>Recently Advertised Items</h2>
+{% endblock text %}
+
+{% block content %}
+    {% for post in posts %}
+        <a href="{% url 'sell_detail' post.pk %}">
+            <div class="box">
+                <img src="{{ post.product_image.url }}" >
+                <h3>{{ post.title }}</h3>
+                <small>{{ post.date_posted|date:"F d, Y" }} </small>
+            </div>
+        </a>
+    {% endfor %}
+{% endblock content %}

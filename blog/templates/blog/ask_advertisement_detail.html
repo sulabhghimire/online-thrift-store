@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+          <br>
+        <h6>By {{ posts.author }}</h6> 
+        <small class="text-muted">{{ posts.date_posted|date:"F d, Y" }}</small>
+        {% if posts.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'ask-update' posts.pk%}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'ask-delete' posts.pk%}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <h1 class="article-title">{{ posts.title }}</h1>
+      <h6>Phone Number : {{posts.author.profile.phone_nuber}}</h6>
+      <p class="article-content">{{ posts.description }}</p>
+    </div>
+</article>
+{% endblock content %}

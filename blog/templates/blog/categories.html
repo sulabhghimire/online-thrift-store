@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{{catego}}<br>
+{{posts_list}}
+    {% for post in posts %}
+        {% if catego == post.category %}
+            <a href="{% url 'sell_detail' post.pk %}">
+                <div class="box">
+                    <img src="{{ post.product_image.url }}" >
+                    <br>{{ post.title }}
+                    <br> {{ post.pk}}
+                    <br>
+                    <small>{{ post.date_posted|date:"F d, Y" }} </small>
+                </div>
+            </a>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

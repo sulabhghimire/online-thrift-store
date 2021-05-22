@@ -1,0 +1,78 @@
+{%  load static %}
+
+<!DOCTYPE html >
+    <head>
+        <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" >
+        <title>Web Site</title>
+    </head>
+    <body>
+        <header>
+         <div class="container">
+             <div id="branding" >
+                <h1><span class="highlight">Advertise</span> Sell</h1>
+             </div>
+             <nav>
+                 <ul>
+                     <li class="current"><a href="{% url 'home' %}">Home </a> </li>
+                     <li><a href="{% url 'sell_list' %}">On Sale</a></li>
+                     <li><a href="{% url 'ask_list' %}">On Ask</a> </li>
+                     {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">Profile</a> </li>
+                        <li><a href="{% url 'logout' %}">LogOut</a> </li> 
+                     {% else %}
+                        <li><a href="{% url 'register' %}">SignUp</a> </li>
+                        <li><a href="{% url 'login' %}">LogIn</a> </li>
+                     {% endif %}        
+                </ul>
+             </nav>
+         </div>
+        </header>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block heading %}
+        {% endblock heading %}
+
+        <section id="newsLetter">
+            <div class="container">
+                {% block text %}
+                {% endblock text %}
+                <form method=POST action="{% url 'search' %}">
+                    {% csrf_token %}
+                    <input placeholder="Search by name" class="form-control me-2" type="search" name="searched">
+                    <button class="btn-outline-secondary" type="submit">Search</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="boxes">
+            <div class="container">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+            <p> Sulabh Ghimire &copy; 2021</p>
+            </div>
+        </footer>
+    </body>
+</html>
+
+
+
+
+

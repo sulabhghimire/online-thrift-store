@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block text %}
+    <h2>
+        {% if user.is_authenticated %}
+        <a href="{% url 'ask_item' %}"> + Ask for item </a>
+        <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'selling' %}">Your Asking</a>
+        {% endif %}
+    </h2>
+
+{% endblock text %}
+
+{% block content %}
+    {% for post in posts %}
+        {% if post.author == user %}
+            <a href="{% url 'buy_detail' post.pk %}">
+                    <br>{{ post.title }}
+                    <br>
+                    <small>{{ post.date_posted|date:"F d, Y" }} </small>
+                    <br>
+                    <br>
+            </a>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
