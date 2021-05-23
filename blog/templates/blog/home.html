@@ -11,7 +11,7 @@
     <div class="sidebar" id="categorical">
         <a class="active">Categorical Search</a>
         {% for category in categories %}
-            <a href="{% url 'catego-search' category.id %}">{{ category.categ }}</a>
+            <a href="{% url 'catego-search' category.pk %}">{{ category.categ }}</a>
         {% endfor %}
       </div>
     </div>

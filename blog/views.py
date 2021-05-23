@@ -127,13 +127,9 @@ class YourAsking(LoginRequiredMixin, ListView):
     template_name = 'blog/my_asking.html'
     context_object_name = 'posts'
 
-class CategoryPage(ListView):
-    model = AdvertiseSell
-    template_name = 'blog/categories.html'
-    context_object_name = 'posts_list'
-
-class CategoryPage(DetailView):
-    model = Category
-    template_name = 'blog/categories.html'
-    context_object_name = 'catego'
-
+def CategoriesPage(request, pk):
+    context = {
+        'categories' : Category.objects.get(id = pk),
+        'posts' : AdvertiseSell.objects.all().order_by('-id')[:16],
+    }
+    return render(request, 'blog/categories.html', context)

@@ -13,13 +13,12 @@ from .views import (
     SellItemDelete,
     YourAsking,
     YourSelling,
-    CategoryPage,
 )
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('search_title/', views.SearchTitle, name='search'),
-    path('category_search/<int:pk>/', CategoryPage.as_view(), name='catego-search'),
+    path('category_search/<int:pk>/', views.CategoriesPage, name='catego-search'),
     path('onsale_detail/<int:pk>/', SellAdvertiseDetailView.as_view(), name='sell_detail'),
     path('onask_detail/<int:pk>/', AskAdvertiseDetailView.as_view(), name='buy_detail'),
     path('onsale_list/', SellingList.as_view(), name='sell_list'),
