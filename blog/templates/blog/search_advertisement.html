@@ -3,7 +3,7 @@
 
 {% block content %}
     {% if searched %}
-        <h1> You searched for {{ searched }}</h1>
+        <h4> You searched for "{{ searched }}"</h4>
         {% for post in posts %}
         <a href="{% url 'sell_detail' post.pk %}">
             <div class="box">
@@ -16,5 +16,4 @@
         </a>
     {% endfor %}
     {% endif %}
-    
 {% endblock content %}

@@ -17,7 +17,7 @@ def SearchTitle(request):
 def home(request):
     context = {
         'categories' : Category.objects.all(),
-        'posts' : AdvertiseSell.objects.all().order_by('-id')[:16],
+        'posts' : AdvertiseSell.objects.all().order_by('-id')[:6],
     }
     return render(request, 'blog/home.html', context)
 
@@ -42,12 +42,14 @@ class SellingList(ListView):
     template_name = 'blog/selling_list.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 9
 
 class BuyingList(ListView):
     model = AdvertiseBuy
     template_name = 'blog/buying_list.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
+    paginate_by = 6
 
 class PostItem(LoginRequiredMixin, CreateView):
     model = AdvertiseSell
@@ -121,11 +123,13 @@ class YourSelling(LoginRequiredMixin, ListView):
     model = AdvertiseSell
     template_name = 'blog/my_selling.html'
     context_object_name = 'posts'
+    paginate_by = 12
 
 class YourAsking(LoginRequiredMixin, ListView):
     model = AdvertiseBuy
     template_name = 'blog/my_asking.html'
     context_object_name = 'posts'
+    paginate_by = 6
 
 def CategoriesPage(request, pk):
     context = {

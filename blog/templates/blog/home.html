@@ -24,14 +24,14 @@
 
 {% block content %}
     {% for post in posts %}
-        <a href="{% url 'sell_detail' post.pk %}">
-            <div class="box">
-                <img src="{{ post.product_image.url }}" >
-                <h3>{{ post.title }}</h3>
-                <br> {{post.price}}
-                <br>
-                <small>{{ post.date_posted|date:"F d, Y" }} </small>
-            </div>
-        </a>
+    <a href="{% url 'sell_detail' post.pk %}">
+        <div class="box">
+            <img src="{{ post.product_image.url }}" >
+            <br>{{ post.title }}
+            <br> NRS.{{ post.price}}
+            <br>
+            <small>{{ post.date_posted|date:"F d, Y" }} </small>
+        </div>
+    </a>
     {% endfor %}
 {% endblock content %}
