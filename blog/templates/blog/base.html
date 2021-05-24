@@ -21,7 +21,7 @@
                  <ul>
                      <li class="current"><a href="{% url 'home' %}">Home </a> </li>
                      <li><a href="{% url 'sell_list' %}">On Sale</a></li>
-                     <li><a href="{% url 'ask_list' %}">On Ask</a> </li>
+                     <li><a href="{% url 'ask_list' %}">On Demand</a> </li>
                      {% if user.is_authenticated %}
                         <li><a href="{% url 'profile' %}">Profile</a> </li>
                         <li><a href="{% url 'logout' %}">LogOut</a> </li> 

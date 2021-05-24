@@ -24,6 +24,7 @@ from users import views as user_views
 urlpatterns = [
     path('password_change/', auth_views.PasswordChangeView.as_view(template_name='users/password_change_form.html'), name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(template_name='users/password_change_done.html'), name='password_change_done'),
+    path('delete_account/', user_views.deleteuser, name='delete_account'),
     path('admin/', admin.site.urls),
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),

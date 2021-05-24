@@ -2,8 +2,7 @@
 
 {% block content %}
         <div>
-            <small>
-                Do you want to login Again? <a href="{% url 'login' %}">Log In</a>
-            </small>
+            <h6>You have been logged out of your account.</h6>
+                Do you want to login Again? <a href="{% url 'login' %}" class="btn btn-primary"">Log In</a>
         </div>
 {% endblock content %}

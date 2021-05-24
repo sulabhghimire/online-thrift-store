@@ -1,10 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block text %}
-    <h2>What people are trying to sell.
+    <h2>ON SALE
         {% if user.is_authenticated %}
-        <a href="{% url 'list_item' %}"> + List your items </a>
-        {% endif %}
+        <a href="{% url 'list_item' %}" class="btn btn-success">Add Items</a>        {% endif %}
     </h2>
 {% endblock text %}
 
@@ -15,7 +14,7 @@
             <div class="box">
                 <img src="{{ post.product_image.url }}" >
                 <br>{{ post.title }}
-                <br> {{ post.pk}}
+                <br> NRS.{{ post.price}}
                 <br>
                 <small>{{ post.date_posted|date:"F d, Y" }} </small>
             </div>

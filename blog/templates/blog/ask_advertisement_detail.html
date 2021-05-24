@@ -16,6 +16,14 @@
       </div>
       <h1 class="article-title">{{ posts.title }}</h1>
       <h6>Phone Number : {{posts.author.profile.phone_nuber}}</h6>
+      <h6><b>Price        : </b>{{posts.price}}</h6>
+      <h6><b>{% if posts.negotiable %}
+            Negotiable
+          {% else %}
+            Not Negotiable
+          {% endif %}
+          </b>
+      </h6>
       <p class="article-content">{{ posts.description }}</p>
     </div>
 </article>

@@ -17,6 +17,8 @@ class AdvertiseSell(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_image = models.ImageField(default='default_prod.jpeg', upload_to='product_images')
+    price = models.CharField(max_length=10, default='XXXX')
+    negotiable = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.title} | {self.author.username}'
@@ -45,6 +47,8 @@ class AdvertiseBuy(models.Model):
     description = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    price = models.CharField(max_length=10, default='XXXX')
+    negotiable = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.title} | {self.author.username}'

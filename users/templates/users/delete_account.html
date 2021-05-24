@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block text %}
+    <h2>Delete Account</h2>
+{% endblock text %}
+
+{% block content %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <h6>Are you sure you want to delete your account? This will delete your profile and any type of post that you have made.</h6>
+                <button type="submit" class="btn btn-danger">Sure, I want to delete</button>
+                <a class="btn btn-primary-info" href="{% url 'home' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -52,7 +52,7 @@ class BuyingList(ListView):
 class PostItem(LoginRequiredMixin, CreateView):
     model = AdvertiseSell
     template_name = 'blog/list_form.html'
-    fields = ['title', 'description', 'category', 'product_image']
+    fields = ['title', 'description', 'category', 'product_image', 'price', 'negotiable']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -61,7 +61,7 @@ class PostItem(LoginRequiredMixin, CreateView):
 class PostItemUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AdvertiseSell
     template_name = 'blog/list_form.html'
-    fields = ['title', 'description', 'category', 'product_image']
+    fields = ['title', 'description', 'category', 'product_image', 'price', 'negotiable']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -86,7 +86,7 @@ class PostItemDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class SellItem(LoginRequiredMixin, CreateView):
     model = AdvertiseBuy
     template_name = 'blog/sell_form.html'
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'price', 'negotiable']
     
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -95,7 +95,7 @@ class SellItem(LoginRequiredMixin, CreateView):
 class SellItemUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AdvertiseBuy
     template_name = 'blog/sell_form.html'
-    fields = ['title', 'description']
+    fields = ['title', 'description', 'price', 'negotiable']
     
     def form_valid(self, form):
         form.instance.author = self.request.user
