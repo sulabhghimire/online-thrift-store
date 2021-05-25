@@ -27,7 +27,7 @@ class AdvertiseSell(models.Model):
         return reverse('sell_detail', args=[str(self.pk)])
 
     def save(self, *args, **kwargs):
-        super().save()
+        super().save( *args, **kwargs)
 
         product_image = Image.open(self.product_image.path)
 
