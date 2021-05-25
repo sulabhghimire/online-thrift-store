@@ -62,6 +62,7 @@
                 {% block content %}
                 {% endblock content %}
             </div>
+            
             <div class="container">
                 {% if is_paginated %}
 
@@ -83,7 +84,7 @@
                         <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
                     {% endif %}
         
-            {% endif %}
+                {% endif %}
             </div>
         </section>
 

@@ -4,9 +4,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import AdvertiseSell, Category, AdvertiseBuy
 from django.views.generic import DetailView, ListView, DeleteView, UpdateView
 from django.views.generic.edit import CreateView
+from django.core.paginator import Paginator
 
 def SearchTitle(request):
-    if request.method == "POST":
+    if request.method == "POST":  
         searched = request.POST['searched']
         title = AdvertiseSell.objects.filter(title__contains = searched)
         return render(request, 'blog/search_advertisement.html', {'searched': searched, 'posts': title} )
@@ -20,12 +21,6 @@ def home(request):
         'posts' : AdvertiseSell.objects.all().order_by('-id')[:6],
     }
     return render(request, 'blog/home.html', context)
-
-def search(request):
-    if 'q' in request.GET:
-        q = request.GET['q']
-        posts = AdvertiseSell.objects.filter(title__icontains=q)
-        return render(request, 'blog/base.html', {'posts':posts})
 
 class SellAdvertiseDetailView(DetailView):
     model = AdvertiseSell
